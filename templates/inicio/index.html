@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Joyería Oro Puro</title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+  <img src="{% static 'img/logo.png' %}" alt="Golden Shine" height="50">
+  <span>Golden Shine</span>
+</div>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="/login">Iniciar sesión</a></li>
+    </ul>
+</nav>
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <h1>Golden Shine</h1>
+    <p>Joyería exclusiva en oro, para momentos únicos</p>
+    <a href="#catalogo">Ver Catálogo</a>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="catalogo" id="catalogo">
+    <h2>Nuestros Productos</h2>
+    <div class="productos">
+        <div class="producto-card">
+            <div class="icono">💍</div>
+            <h3>Anillo Solitario</h3>
+            <p>Oro 18k con diamante central</p>
+            <div class="precio">$1.200.000</div>
+        </div>
+        <div class="producto-card">
+            <div class="icono">📿</div>
+            <h3>Collar Elegante</h3>
+            <p>Cadena en oro 24k, 45cm</p>
+            <div class="precio">$850.000</div>
+        </div>
+        <div class="producto-card">
+            <div class="icono">✨</div>
+            <h3>Aretes Gota</h3>
+            <p>Oro 18k con acabado pulido</p>
+            <div class="precio">$620.000</div>
+        </div>
+        <div class="producto-card">
+            <div class="icono">⌚</div>
+            <h3>Pulsera Tejida</h3>
+            <p>Oro 14k, diseño artesanal</p>
+            <div class="precio">$980.000</div>
+        </div>
+    </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="nosotros" id="nosotros">
+    <h2>Quiénes Somos</h2>
+    <p>
+        En <strong style="color:#d4af37">Oro Puro</strong> llevamos más de 20 años creando joyas
+        exclusivas en oro para las familias de la región. Cada pieza es elaborada a mano
+        por nuestros maestros joyeros, garantizando calidad, elegancia y un valor que
+        perdura generaciones.
+    </p>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+    <h2>Contáctanos</h2>
+    <form method="POST" action="/contacto">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+        <textarea name="mensaje" placeholder="Tu mensaje"></textarea>
+        <button type="submit">Enviar mensaje</button>
+    </form>
+    {% if enviado %}
+        <p style="text-align:center; color:#d4af37; margin-top:20px; font-size:18px;">
+            ✅ ¡Mensaje enviado con éxito!
+        </p>
+    {% endif %}
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 <span>Oro Puro Joyería</span> — Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
